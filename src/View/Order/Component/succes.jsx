@@ -10,6 +10,7 @@ function Success() {
   const { state } = useAppContext();
   const { orderData } = state || {};
   const navigate = useNavigate();
+  
   useEffect(() => {
     document.title = `OmYoo-Studio | Succes`;
   });
