@@ -1,0 +1,192 @@
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.custom-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #4a5568;
+  border-color: #4a5568 transparent #4a5568 transparent;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.job-list-heading {
+  position: relative;
+  background: #4a5568;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: skewY(-5deg);
+  z-index: 1;
+}
+
+.job-list-heading {
+  position: relative;
+  background: #4a5568;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.job-list-heading::before {
+  content: "";
+  position: absolute;
+  top: -30%; /* Atur tinggi efek shine yang sedikit lebih tinggi */
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    #ffffff 40%,
+    transparent 60%
+  );
+  transform: rotate(45deg) translateX(-50%); /* Sesuaikan posisi shine */
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-150%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(150%) rotate(45deg);
+  }
+}
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 5;
+}
+
+.custom-card {
+  width: 100%;
+  max-width: 300px;
+  height: 500px;
+  perspective: 1000px;
+  margin-bottom: 50px;
+  transition: transform 0.5s;
+  position: relative;
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px; /* Atur sudut bulatan di sini */
+}
+
+.custom-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    margin-left: 10px;
+  }
+}
+
+.no-matching-jobs-message {
+  color: #ff0000;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.shines {
+  position: relative;
+  overflow: hidden;
+}
+
+.shines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    transparent 100%
+  );
+  animation: shine-animation 5s infinite linear;
+  -webkit-animation: shine-animation 5s infinite linear;
+}
+
+@keyframes shine-animation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
