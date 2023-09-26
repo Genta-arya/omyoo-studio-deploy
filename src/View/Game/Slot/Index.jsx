@@ -22,7 +22,12 @@ const SlotMachine = () => {
   const [saldo, setSaldo] = useState(100000);
   const [selectedCost, setSelectedCost] = useState(1000);
   const [hadiah, setHadiah] = useState("");
-  const [winPercentage, setWinPercentage] = useState(5); // Persentase kemenangan
+  const [winPercentage, setWinPercentage] = useState(5); 
+
+  useEffect(() => {
+    document.title = `OmYoo-Studio | PlayGame`;
+  });
+
 
   const costFactors = {
     1000: 1,
@@ -32,12 +37,12 @@ const SlotMachine = () => {
 
   useEffect(() => {
     if (isSpinning) {
-      const biayaSpin = selectedCost; // Menggunakan biaya yang dipilih
-      const faktor = costFactors[selectedCost]; // Menggunakan faktor yang sesuai
+      const biayaSpin = selectedCost;
+      const faktor = costFactors[selectedCost]; 
 
       if (saldo >= biayaSpin) {
         const spinTimeout = setTimeout(() => {
-          const shouldWin = Math.random() * 100 < winPercentage; // Gunakan winPercentage yang diatur
+          const shouldWin = Math.random() * 100 < winPercentage; 
 
           let newSlots;
           if (shouldWin) {
