@@ -61,7 +61,7 @@ const SlotMachine = () => {
               Math.floor(Math.random() * slotItems.length),
             ];
             setSaldo(saldo - biayaSpin);
-            setWinnerMessage("Coba lagi");
+            setWinnerMessage("Coba lagi.");
             setHadiah("");
           }
 
