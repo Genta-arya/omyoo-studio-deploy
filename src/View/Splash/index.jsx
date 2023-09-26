@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../../src/Style/Splash.css";
 import FadeLoader from "react-spinners/FadeLoader";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const SplashScreen = () => {
+  useEffect(() => {
+    document.title = `Loading...`;
+  });
+
   return (
     <div className="splash-screen">
       <div className="splash-card">

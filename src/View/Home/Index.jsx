@@ -17,9 +17,9 @@ function Home() {
   const [theme, setTheme] = useState("light");
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  useEffect(() => {
+    document.title = `OmYoo-Studio`;
+  });
 
   useEffect(() => {
     const handleScroll = () => {

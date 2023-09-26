@@ -18,19 +18,24 @@ const GameList = () => {
       title: "Simulasi Slot Machine Game",
 
       imageURL: game1,
-      url: "https://omyoo-studio.vercel.app/slot",
+      url: "https://www.omyoo-studio.online/slot",
     },
     {
       id: 1,
       title: "Quiz Game",
 
       imageURL: game2,
-      url: "https://omyoo-studio.vercel.app/quiz",
+      url: "https://www.omyoo-studio.online/quiz",
     },
   ];
 
   const handleShare = (url) => {};
   const [carouselIndex, setCarouselIndex] = useState(0);
+
+  useEffect(() => {
+    document.title = `OmYoo-Studio | Game`;
+  });
+
 
   return (
     <div>

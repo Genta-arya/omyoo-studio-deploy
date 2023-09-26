@@ -5,6 +5,10 @@ import { faArrowLeft, faRedo, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function StartScreen({ onStartClick, highScore }) {
+  useEffect(() => {
+    document.title = `OmYoo-Studio | QuizGame`;
+  });
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black sm:w-auto w-max">
       <div className="bg-black rounded-3xl border-8 border-gray-300 p-3 ">
@@ -46,6 +50,11 @@ function QuizApp() {
     localStorage.getItem("highScore") || 0
   );
   const [gameStarted, setGameStarted] = useState(false);
+
+  useEffect(() => {
+    document.title = `OmYoo-Studio | QuizGame play`;
+  });
+
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {

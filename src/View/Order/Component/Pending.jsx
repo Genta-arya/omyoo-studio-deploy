@@ -12,6 +12,11 @@ function Pending() {
 
   const [orderStatus, setOrderStatus] = useState("pending");
 
+
+  useEffect(() => {
+    document.title = `OmYoo-Studio | Payment`;
+  });
+
   useEffect(() => {
     const fetchOrderStatus = () => {
       fetch(`${API_ENDPOINTS.STATUS}/${order_id}`)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import sukses from "../../../Asset/sukses.png";
 import { useAppContext } from "../../../Utils/GlobalState";
 import { sendWhatsAppMessage } from "../../../Service/API";
@@ -10,6 +10,9 @@ function Success() {
   const { state } = useAppContext();
   const { orderData } = state || {};
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = `OmYoo-Studio | Succes`;
+  });
 
   const handleContactAdmin = () => {
     if (orderData) {

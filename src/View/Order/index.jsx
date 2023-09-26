@@ -19,6 +19,9 @@ function FormOrder() {
   const [showAlertEmail, setShowAlertEmail] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    document.title = `OmYoo-Studio | OrderNow`;
+  });
   const [formData, setFormData] = useState({
     nama: "",
     kontak: "",
@@ -145,7 +148,6 @@ function FormOrder() {
       if (response.ok) {
         const midtransResponse = await response.json();
         const { redirectUrl, order_id } = midtransResponse;
-        console.log(midtransResponse);
 
         setGlobalState({
           redirectUrl,
@@ -167,10 +169,7 @@ function FormOrder() {
             navigate("/pending");
           }
         }
-      } else {
-        console.error("Error placing order");
-        console.log("ini data order : ", orderData);
-        // setShowAlertEmail(true)
+        //
         setShowAlert(true);
       }
     } catch (error) {

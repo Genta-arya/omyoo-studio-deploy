@@ -39,6 +39,11 @@ const JobList = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
+    document.title = `OmYoo-Studio | FindJobs`;
+  });
+
+
+  useEffect(() => {
     const fetchJobs = async () => {
       const options = {
         method: "GET",

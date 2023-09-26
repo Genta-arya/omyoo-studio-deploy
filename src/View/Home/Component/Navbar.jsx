@@ -57,6 +57,7 @@ function Navbar() {
         </div>
 
         <nav className="hidden md:flex md:space-x-4  justify-end">
+          
           <ScrollLink
             to="productInfo"
             spy={true}
@@ -65,6 +66,7 @@ function Navbar() {
             duration={500}
             className="text-white hover:text-gray-300 py-2 px-4 block md:inline-block hover:border-b-2 border-white"
             style={{ cursor: "pointer" }}
+            
           >
             Product
           </ScrollLink>

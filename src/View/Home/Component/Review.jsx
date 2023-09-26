@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
@@ -63,10 +63,15 @@ function CustomerReviews() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviews.map((review) => (
-          <div key={review.id} className="bg-gray-300 p-4 rounded-3xl shadow-2xl drop-shadow-2xl hover:scale-90 transition-all delay-75 shine">
+          <div
+            key={review.id}
+            className="bg-gray-300 p-4 rounded-3xl shadow-2xl drop-shadow-2xl hover:scale-90 transition-all delay-75 shine"
+          >
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
-                <span className="text-lg font-semibold text-white">{review.rating}</span>
+                <span className="text-lg font-semibold text-white">
+                  {review.rating}
+                </span>
               </div>
               <div className="ml-2">
                 <h3 className="text-xl font-semibold">{review.name}</h3>

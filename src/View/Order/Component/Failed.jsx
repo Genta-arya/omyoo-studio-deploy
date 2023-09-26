@@ -8,6 +8,9 @@ function FailedPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = `OmYoo-Studio | Failed`;
+  });
   
 
   const orderData = location.state ? location.state.orderData : null;

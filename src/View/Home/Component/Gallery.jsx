@@ -3,6 +3,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import React, { useState, useEffect } from "react";
 
 function ProjectContent() {
+
+  
   const [carouselIndex, setCarouselIndex] = useState(0);
   function getRandomImageURL(width, height) {
     const imageId = Math.floor(Math.random() * 1084) + 1;
@@ -14,7 +16,8 @@ function ProjectContent() {
   const imageUrls = Array.from({ length: 6 }, (_, index) => {
     return getRandomImageURL(imageWidth, imageHeight);
   });
-
+ 
+  
   return (
     <section id="projectSection" className="py-12 w-screen overflow-hidden">
       <div className="container mx-auto bg-gray-500 rounded-xl p-6 w-screen overflow-hidden m-5">
