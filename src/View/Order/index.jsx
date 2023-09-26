@@ -19,9 +19,6 @@ function FormOrder() {
   const [showAlertEmail, setShowAlertEmail] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    document.title = `OmYoo-Studio | OrderNow`;
-  });
   const [formData, setFormData] = useState({
     nama: "",
     kontak: "",
@@ -29,6 +26,10 @@ function FormOrder() {
     email: "",
     tanggal: "",
     waktu: "",
+  });
+
+  useEffect(() => {
+    document.title = "OmYoo-Studio | OrderNow";
   });
 
   useEffect(() => {
@@ -169,11 +170,12 @@ function FormOrder() {
             navigate("/pending");
           }
         }
-        //
+      } else {
         setShowAlert(true);
       }
     } catch (error) {
-      console.error("Failed to place order:", error);
+      setShowAlert(true);
+      console.log("payment sudha ada");
     } finally {
       setLoading(false);
     }
