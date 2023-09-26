@@ -28,6 +28,11 @@ const LoginForm = () => {
   const [isNewPasswordModalOpen, setIsNewPasswordModalOpen] = useState(false);
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    document.title = `OmYoo-Studio | Login`;
+  });
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -77,11 +82,10 @@ const LoginForm = () => {
           const { username } = await usernameResponse.json();
           localStorage.setItem("username", username);
           navigate("/dashboard");
-        } 
+        }
       } else if (response.status === 401) {
         setLoginError("Email atau password salah");
-      }
-      else if (response.status === 500) {
+      } else if (response.status === 500) {
         setLoginErrorServer("Gagal Terhubung Keserver");
       }
     } catch (error) {
@@ -276,7 +280,7 @@ const LoginForm = () => {
               {loginError}
             </p>
           )}
-           {loginErrorServer && (
+          {loginErrorServer && (
             <p className="text-red-500 text-sm items-center justify-center flex">
               {loginErrorServer}
             </p>

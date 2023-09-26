@@ -7,6 +7,10 @@ const Dashboard = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
+    document.title = `OmYoo-Studio | Dashboard`;
+  });
+
+  useEffect(() => {
     const token = localStorage.getItem("token");
 
 
