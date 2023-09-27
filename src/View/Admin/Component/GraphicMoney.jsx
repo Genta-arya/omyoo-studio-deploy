@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Chart from "chart.js/auto";
-import { API_ENDPOINTS } from "../../../Service/API";
+import { API_ENDPOINTS ,Token_url} from "../../../Service/API";
+
 
 const EarningsChart = () => {
   const [earningsData, setEarningsData] = useState({});
@@ -14,18 +15,24 @@ const EarningsChart = () => {
     setSelectedYear(parseInt(event.target.value));
   };
 
-  useEffect(() => {
+ useEffect(() => {
     axios
-      .get(`${API_ENDPOINTS.ORDERS}`)
+      .get(`${API_ENDPOINTS.ORDERS}`, {
+        headers: {
+          Authorization: Token_url,
+        },
+      })
       .then((response) => {
         const orderData = response.data;
 
-    
-        const settledOrders = orderData.filter((order) => order.status === "settled");
+        const settledOrders = orderData.filter(
+          (order) => order.status === "settled"
+        );
 
-    
         const uniqueYears = Array.from(
-          new Set(settledOrders.map((order) => new Date(order.date).getFullYear()))
+          new Set(
+            settledOrders.map((order) => new Date(order.date).getFullYear())
+          )
         );
         setAvailableYears(uniqueYears);
 
