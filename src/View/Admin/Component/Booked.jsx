@@ -7,7 +7,8 @@ import {
   FaClock,
   FaMapMarkerAlt,
 } from "react-icons/fa"; // Import ikon-ikon yang diperlukan
-import { API_ENDPOINTS } from "../../../Service/API";
+import { API_ENDPOINTS ,Token_url} from "../../../Service/API";
+
 
 const BookedOrders = () => {
   const [bookedOrders, setBookedOrders] = useState([]);
@@ -17,31 +18,34 @@ const BookedOrders = () => {
 
   
   const fetchBookedOrders = () => {
-    setLoading(true); 
-
+    setLoading(true);
+  
     axios
-      .get(`${API_ENDPOINTS.ORDERS}`)
+      .get(`${API_ENDPOINTS.ORDERS}`, {
+        headers: {
+          Authorization: Token_url
+        }
+      })
       .then((response) => {
-        
-    
         const settledOrders = response.data.filter(
           (order) => order.status === "settled"
         );
         setBookedOrders(settledOrders);
-
+      
+  
         const uniqueYears = Array.from(
           new Set(
             settledOrders.map((order) => new Date(order.date).getFullYear())
           )
         );
         setYears(uniqueYears);
+        
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        
       })
       .finally(() => {
-        setLoading(false); 
+        setLoading(false);
       });
   };
 
