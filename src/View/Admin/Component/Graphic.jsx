@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Chart from "chart.js/auto";
-import { API_ENDPOINTS } from "../../../Service/API";
+import { API_ENDPOINTS ,Token_url} from "../../../Service/API";
 
 const SalesChart = () => {
   const [salesData, setSalesData] = useState({});
@@ -12,10 +12,19 @@ const SalesChart = () => {
     axios
       .get(`${API_ENDPOINTS.ORDERS}`)
       .then((response) => {
+        const orderData  useEffect(() => {
+    axios
+      .get(`${API_ENDPOINTS.ORDERS}`, {
+        headers: {
+          Authorization: Token_url,
+        },
+      })
+      .then((response) => {
         const orderData = response.data;
 
-     
-        const settledOrders = orderData.filter((order) => order.status === "settled");
+        const settledOrders = orderData.filter(
+          (order) => order.status === "settled"
+        );
 
         const productCount = {};
         settledOrders.forEach((order) => {
